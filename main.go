@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"log"
 	"strings"
-
-	"golang.org/x/text/cases"
 )
 
 type Command struct {
