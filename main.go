@@ -44,10 +44,17 @@ func parse(source string) []Command {
 }
 
 func interpret(commands []Command) {
+	vars := map[string]string{}
+
 	for _, cmd := range commands{
 		switch cmd.Name {
 		case "print":
 			fmt.Println(strings.Join(cmd.Args, " "))
+		case "set":
+			if len(cmd.Args) == 0 || len(cmd.Args) == 1 {
+				log.Fatal("set requires at least 2 arguments")
+			}
+			vars[cmd.Args[0]] = strings.Join(cmd.Args[1:], " ")
 		default:
 			log.Fatalf("Unknows command: %s", cmd.Name)
 		}
