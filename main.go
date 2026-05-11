@@ -55,6 +55,18 @@ func interpret(commands []Command) {
 				log.Fatal("set requires at least 2 arguments")
 			}
 			vars[cmd.Args[0]] = strings.Join(cmd.Args[1:], " ")
+		case "get":
+			if len(cmd.Args) != 1 {
+				log.Fatal("get requires 1 argument")
+			}
+
+			val, ok := vars[cmd.Args[0]]
+
+			if ok {
+				fmt.Println(val)
+			} else {
+				log.Fatalf("No variable under name %s", cmd.Args[0])
+			}
 		default:
 			log.Fatalf("Unknows command: %s", cmd.Name)
 		}
