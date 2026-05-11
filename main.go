@@ -49,7 +49,7 @@ func interpret(commands []Command) {
 		case "print":
 			fmt.Println(strings.Join(cmd.Args, " "))
 		default:
-			log.Fatal(fmt.Sprintf("Unknows command: %s", cmd.Name))
+			log.Fatalf("Unknows command: %s", cmd.Name)
 		}
 	}
 }
