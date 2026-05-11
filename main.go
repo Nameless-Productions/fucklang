@@ -53,7 +53,3 @@ func interpret(commands []Command) {
 		}
 	}
 }
-
-func main() {
-
-}
