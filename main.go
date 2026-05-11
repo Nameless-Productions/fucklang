@@ -1,6 +1,12 @@
 package main
 
-import "strings"
+import (
+	"fmt"
+	"log"
+	"strings"
+
+	"golang.org/x/text/cases"
+)
 
 type Command struct {
 	Name string   `json:"name"`
@@ -37,6 +43,17 @@ func parse(source string) []Command {
 	}
 
 	return commands
+}
+
+func interpret(commands []Command) {
+	for _, cmd := range commands{
+		switch cmd.Name {
+		case "print":
+			fmt.Println(strings.Join(cmd.Args, " "))
+		default:
+			log.Fatal(fmt.Sprintf("Unknows command: %s", cmd.Name))
+		}
+	}
 }
 
 func main() {
